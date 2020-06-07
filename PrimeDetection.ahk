@@ -10,6 +10,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 f7::
 	pToken := Gdip_Startup()
 	boxX := 479
+	primes := []
 	Loop, 4
 	{
 		numbers := boxX "|410|238|50"
@@ -18,10 +19,12 @@ f7::
 		Gdip_SaveBitmapToFile(snap, filename)
 		Gdip_DisposeImage(snap)
 		OCRtext := Regexreplace(OCR(filename), "[^[:alnum:]]")
-		text := text "`nPrime " A_index ":" OCRtext "`n"
+		primes.Push(OCRtext)
 		boxX := boxX + 243
 	}
-	MsgBox % text
-	text := ""
+	for index, element in primes
+	{
+		MsgBox % "Prime number " index " is " element
+	}
 	Exit
 
