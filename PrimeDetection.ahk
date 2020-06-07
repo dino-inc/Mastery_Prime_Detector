@@ -31,12 +31,15 @@ f7::
 
 CheckForOwnedPrime(text) 
 {
+	Loop, read, suffixes.txt
+	{
+		text := StrReplace(text, A_LoopReadLine) 
+	}
 	Loop, Read, primes.txt
 	{
 		similarity := compareTwoStrings(text, A_LoopReadLine)
-		if (similarity > .9)
+		if (similarity > .7)
 		{
-			msgbox % "Found match for " text " with " A_LoopReadLine " with " similarity " similarity."
 			return True
 		} 
 	}
