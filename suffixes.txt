@@ -1,25 +1,26 @@
+chassisblueprint
+collarblueprint
+harnessblueprint
+neuropticsblueprint
+systemsblueprint
+wingsblueprint
 band
 barrel
 blade
-blueprint
 boot
 buckle
 carapace
 cerebrum
 chain
-chassis blueprint
-collar blueprint
 disc
 gauntlet
 grip
 guard
 handle
-harness blueprint
 head
 hilt
 link
 lower limb
-neuroptics blueprint
 ornament
 pouch
 reciever
@@ -27,6 +28,5 @@ stars
 stock
 string
 systems
-systems blueprint
 upper limb
-wings blueprint
+blueprint
