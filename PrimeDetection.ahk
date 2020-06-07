@@ -17,7 +17,7 @@ f7::
 		filename := "cache/Shot" A_index ".png"
 		Gdip_SaveBitmapToFile(snap, filename)
 		Gdip_DisposeImage(snap)
-		text := text OCR(filename)
+		text := text "`nPrime " A_index ":" OCR(filename) "`n"
 		boxX := boxX + 243
 	}
 
