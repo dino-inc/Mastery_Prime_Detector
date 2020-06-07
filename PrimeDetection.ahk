@@ -9,10 +9,19 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 f7::
 	pToken := Gdip_Startup()
-	snap := Gdip_BitmapFromScreen("479|399|973|50")
-	Gdip_SaveBitmapToFile(snap, "cache/Shot.png")
-	Gdip_DisposeImage(snap)
-	text := OCR("cache/Shot.png")
+	boxX := 479
+	Loop, 4
+	{
+		numbers := boxX "|410|238|50"
+		snap := Gdip_BitmapFromScreen(numbers)
+		filename := "cache/Shot" A_index ".png"
+		Gdip_SaveBitmapToFile(snap, filename)
+		Gdip_DisposeImage(snap)
+		text := text OCR(filename)
+		boxX := boxX + 243
+	}
+
 	MsgBox % text
+	text := ""
 	Exit
 
