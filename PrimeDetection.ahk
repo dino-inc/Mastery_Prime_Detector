@@ -25,19 +25,28 @@ f7::
 	}
 	for index, element in primes
 	{
-		MsgBox % "Prime number " index " is " element " and similarity is " CheckForOwnedPrime(element)
+		CheckForOwnedPrime(element)
 	}
 	Exit
 
-
-CheckForOwnedPrime(text) {
-	similarity := compareTwoStrings(text, "MesaPrimeChassisBlueprint")
-	if (similarity > .9)
+CheckForOwnedPrime(text) 
+{
+	Loop, Read, primes.txt
 	{
-		return similarity
-	} 
-	return similarity
+		similarity := compareTwoStrings(text, A_LoopReadLine)
+		if (similarity > .9)
+		{
+			msgbox % "Found match for " text " with " A_LoopReadLine " with " similarity " similarity."
+			return True
+		} 
+	}
+	return False
 }
+
+; Read user profile to text file
+
++f7::
+	Exit
 
 ; Entirely taken from https://github.com/Chunjee/string-similarity.ahk/blob/master/export.ahk, import was not working so copy/paste it is 
 compareTwoStrings(param_string1,param_string2) {
