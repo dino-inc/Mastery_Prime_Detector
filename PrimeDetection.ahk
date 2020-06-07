@@ -17,10 +17,10 @@ f7::
 		filename := "cache/Shot" A_index ".png"
 		Gdip_SaveBitmapToFile(snap, filename)
 		Gdip_DisposeImage(snap)
-		text := text "`nPrime " A_index ":" OCR(filename) "`n"
+		OCRtext := Regexreplace(OCR(filename), "[^[:alnum:]]")
+		text := text "`nPrime " A_index ":" OCRtext "`n"
 		boxX := boxX + 243
 	}
-
 	MsgBox % text
 	text := ""
 	Exit
