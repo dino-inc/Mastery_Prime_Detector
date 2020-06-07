@@ -25,7 +25,16 @@ f7::
 	}
 	for index, element in primes
 	{
-		CheckForOwnedPrime(element)
+		match := CheckForOwnedPrime(element)
+		if (match == True)
+		{
+			Gui, -caption +ToolWindow +HWNDguiID +AlwaysOnTop
+			Gui, Color, EEAA99
+			Gui +LastFound  
+			WinSet, TransColor, EEAA99
+			Gui, Add, Picture, x0 y0 w30 h29 , mastery.png
+			Gui, Show, x479 y300 
+		}
 	}
 	Exit
 
