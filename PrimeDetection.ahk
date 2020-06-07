@@ -5,9 +5,14 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ;Beginning of actual script
 #include <Vis2>
+#include <GDIP_All>
 
 f7::
-	text := OCR([0, 0, 200, 200])
+	pToken := Gdip_Startup()
+	snap := Gdip_BitmapFromScreen("479|399|973|50")
+	Gdip_SaveBitmapToFile(snap, "cache/Shot.png")
+	Gdip_DisposeImage(snap)
+	text := OCR("cache/Shot.png")
 	MsgBox % text
-	
-#^c:: OCR()
+	Exit
+
