@@ -23,20 +23,33 @@ f7::
 		primes.Push(OCRtext)
 		boxX := boxX + 243
 	}
+	windowIDs := []
 	for index, element in primes
 	{
 		match := CheckForOwnedPrime(element)
 		if (match == True)
 		{
-			Gui, -caption +ToolWindow +HWNDguiID +AlwaysOnTop
+			Gui, New, -caption +ToolWindow +HWNDguiID +AlwaysOnTop
 			Gui, Color, EEAA99
 			Gui +LastFound  
 			WinSet, TransColor, EEAA99
-			Gui, Add, Picture, x0 y0 w30 h29 , mastery.png
-			Gui, Show, x479 y300 
+			Gui, Add, Picture, x0 y0 w60 h60, mastery.png
+			xPos := 240 + (240 * index-1)
+			temp = %xPos%
+			Gui, Show, x%temp% y268
+			Winget, uniqueid, ID, A
+			windowIDs.Push(uniqueid)
 		}
 	}
+	Sleep, 5000
+	for index, windowid in windowIDs
+	{
+			WinClose, ahk_id %windowid%
+	}
 	Exit
+
+
+
 
 CheckForOwnedPrime(text) 
 {
